@@ -1,0 +1,11 @@
+node 'default' {
+package { 'curl':
+    ensure  => 'installed'
+  }
+
+  $text_editor = ['nano', 'vim']
+  package { $text_editor:
+    ensure  => 'installed'
+  }
+}
+

@@ -1,0 +1,10 @@
+node 'default' {
+
+  file { '/root/facts.txt':
+    ensure  => 'present',
+    content => "${facts['hostname']} | ${facts['ipaddress']}"
+  }
+
+
+}
+

@@ -1,0 +1,25 @@
+node default {
+
+  if( $facts['operatingsystem'] == 'Ubuntu' ){
+    file { '/root/ubuntu.txt':
+      ensure  => 'present',
+      content => "Ubuntu OS: ${facts['hostname']} | ${facts['ipaddress']}"
+    }
+
+    $packages = ['cowsay', 'fortune']
+    package { $packages:
+      ensure  => 'installed'
+    }
+  }else{
+    file { '/root/other.txt':
+      ensure  => 'present',
+      content => "Other OS: ${facts['hostname']} | ${facts['ipaddress']}"
+    }
+
+    $packages = ['htop', 'iftop']
+    package { $packages:
+      ensure  => 'installed'
+    }
+  }
+}
+

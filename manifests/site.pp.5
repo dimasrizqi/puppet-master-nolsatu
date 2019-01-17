@@ -1,0 +1,14 @@
+node 'node1' {
+  class { 'apache': }
+  apache::vhost { 'node1.master':
+    port    => '80',
+    docroot => '/var/www/html'
+  }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+node 'default' {
+  file { '/root/test.txt':
+    ensure  => 'present',
+    content => 'testing...testing...testing'
+  }
+}
+

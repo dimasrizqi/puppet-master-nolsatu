@@ -1,0 +1,18 @@
+class create_user ($username){
+  user { $username:
+    ensure => present,
+    shell  => '/bin/bash',
+    home   => "/home/$username",
+    password => '$1$a.ZlS.TB$9UhstuvMYgt/YqszfnlxM1',
+    managehome => true
+  }
+}
+
+node 'websrv-u1', 'websrv-c1' {
+
+  class { create_user:
+    username  => 'dimasrizqi3128'
+  }
+
+}
+

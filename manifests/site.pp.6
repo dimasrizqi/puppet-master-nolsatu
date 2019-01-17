@@ -1,0 +1,34 @@
+class basic_tools {
+  $basic_packages = ['python-minimal', 'python-pip', 'unzip']
+  package { $basic_packages:
+    ensure  => 'installed'
+  }
+}
+
+class monitoring_tools inherits basic_tools{
+  $monitoring_packages = ['htop', 'iftop', 'slurm']
+  package {  $monitoring_packages:
+    ensure  => 'installed'
+  }
+}
+
+class text_editor {
+  $text_packages = ['nano', 'vim']
+  package { $text_packages:
+    ensure  => 'installed'
+  }
+}
+
+node 'testsrv1' {
+  class { monitoring_tools: }
+  class { text_editor: }
+}
+
+node 'websrv-u1' {
+  class { text_editor: }
+}
+
+node 'default' {
+  class { basic_tools: }
+}
+
